@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -66,7 +66,8 @@ namespace C__Reacab
             while (running)
             {
                 Console.Clear();
-                Console.WriteLine("Main Menu");
+                Console.WriteLine("---**Main Menu**---");
+                Console.WriteLine();
                 Console.WriteLine("1. Course Menu");
                 Console.WriteLine("2. Student Menu");
                 Console.WriteLine("3. Exit");
@@ -103,7 +104,8 @@ namespace C__Reacab
             while (running)
             {
                 Console.Clear();
-                Console.WriteLine("Course Menu");
+                Console.WriteLine("--**Course Menu**--");
+                Console.WriteLine();    
                 Console.WriteLine("1. Add Course");
                 Console.WriteLine("2. View Courses");
                 Console.WriteLine("3. Update Course");
@@ -147,7 +149,8 @@ namespace C__Reacab
             while (running)
             {
                 Console.Clear();
-                Console.WriteLine("Student Menu ");
+                Console.WriteLine("--**Student Menu**--");
+                Console.WriteLine();
                 Console.WriteLine("1. Add Student");
                 Console.WriteLine("2. View Students");
                 Console.WriteLine("3. Update Student");
@@ -239,7 +242,11 @@ namespace C__Reacab
                     while (reader.Read())
                     {
                         Console.WriteLine($"Course ID: {reader["CourseID"]},\n Course Name: {reader["CourseName"]}");
+                        Console.WriteLine();
                     }
+                    Console.WriteLine();
+                    Console.Write("Press Enter to Continue..........");
+                    Console.ReadKey();
                 }
             }
         }
@@ -263,7 +270,10 @@ namespace C__Reacab
                     int rowsaffected = cmd.ExecuteNonQuery();
                     if(rowsaffected > 0)
                     {
-                        Console.WriteLine("Course Updated Succesfully.");
+                        Console.WriteLine();
+                        Console.WriteLine("Course updated successfully.");
+                        Console.Write("Press Enter to Continue..........");
+                        Console.ReadKey();
                     }
                     else
                     {
@@ -288,15 +298,19 @@ namespace C__Reacab
                     int rowsaffected = cmd.ExecuteNonQuery();
                     if(rowsaffected > 0)
                     {
-                        Console.WriteLine("Course deleted successfully.");
+                        Console.WriteLine();
+                        Console.WriteLine("Course Record Deleted successfully.");
+                        Console.Write("Press Enter to Continue..........");
+                        Console.ReadKey();
                     }
                     else
                     {
                         Console.WriteLine("Course not found.");
                     }
-                }
+                }                                                
             }
         }
+
         static void AddStudent()
         {
             
@@ -336,6 +350,12 @@ namespace C__Reacab
                     }
                   
                    
+
+
+
+
+
+
 
                 }
             }
@@ -432,40 +452,3 @@ namespace C__Reacab
 
 
 
-//public void ListStudentCourses()
-//{
-//    string query = @"
-//            SELECT 
-//                s.StudentID, 
-//                s.StudentName, 
-//                s.City, 
-//                c.CourseName
-//            FROM 
-//                Enrollments e
-//            INNER JOIN 
-//                Students s ON e.StudentID = s.StudentID
-//            INNER JOIN 
-//                Courses c ON e.CourseID = c.CourseID";
-
-//    using (SqlConnection connection = new SqlConnection(connectionString))
-//    {
-//        SqlCommand command = new SqlCommand(query, connection);
-
-//        try
-//        {
-//            connection.Open();
-//            SqlDataReader reader = command.ExecuteReader();
-
-//            while (reader.Read())
-//            {
-//                Console.WriteLine($"Student ID: {reader["StudentID"]}, Name: {reader["StudentName"]}, City: {reader["City"]}, Course: {reader["CourseName"]}");
-//            }
-
-//            reader.Close();
-//        }
-//        catch (SqlException ex)
-//        {
-//            Console.WriteLine("SQL Error: " + ex.Message);
-//        }
-//    }
-//}
